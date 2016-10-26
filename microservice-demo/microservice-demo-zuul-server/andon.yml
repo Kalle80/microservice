@@ -1,9 +1,9 @@
 general:
   whitelist: true
-  pipeline_base_name: Application_X
-  dependency:
-   - Pipeline X [Stage X]
-   - Pipeline Y [Stage Y]
+  pipeline_base_name: ZUUL
+#  dependency:
+#   - Pipeline X [Stage X]
+#   - Pipeline Y [Stage Y]
   
 pre_stage:
   go_cd_agent_props:
@@ -22,7 +22,7 @@ compile:
   execute:
     - commands:
       - cmd:
-        - true
+        - mvn clean -Djava.security.egd=file:/dev/./urandom install
         - true
         build_path: .
       - cmd:
