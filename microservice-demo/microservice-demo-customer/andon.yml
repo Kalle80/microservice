@@ -1,6 +1,6 @@
 general:
   whitelist: true
-  pipeline_base_name: Catalog
+  pipeline_base_name: Customer
 #  dependency:
 #   - Pipeline X [Stage X]
 #   - Pipeline Y [Stage Y]
