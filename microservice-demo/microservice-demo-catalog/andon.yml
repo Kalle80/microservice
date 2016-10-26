@@ -30,7 +30,7 @@ compile:
 #        - true
 #        build_path: .
   
-#integration_testing:
+integration_testing:
   compose_file_path: /src/test/resources/docker-compose
   compose_file_name: docker-compose.yml
   
