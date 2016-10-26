@@ -1,50 +1,47 @@
 general:
   whitelist: true
-  
-acceptance_testing:
+  pipeline_base_name: Application_X
   dependency:
    - Catalog [CompileAndUnitTests]
    - Customer [CompileAndUnitTests]
    - Order [CompileAndUnitTests]
    - Zuul [CompileAndUnitTests]
-  compose_file_path: /src/test/resources
-  compose_file_name: docker-compose.yml
+  
+pre_stage:
   go_cd_agent_props:
     - java:8
     - maven
+  custom_cmd:
+    - true
+    - true
   
-#  cron_timer: 0 0 22 ? * MON-FRI
-  post_stage:
-    custom_cmd:
-      - sudo docker login -u eekamak -p $passu
-      - sudo docker tag catalog:latest eekamak/catalog:latest
-      - sudo docker push eekamak/catalog:latest
-      - sudo docker tag customer:latest eekamak/customer:latest
-      - sudo docker push eekamak/customer:latest
-      - sudo docker tag order:latest eekamak/order:latest
-      - sudo docker push eekamak/order:latest
-      - sudo docker tag eureka:latest eekamak/eureka:latest
-      - sudo docker push eekamak/eureka:latest
-      - sudo docker tag zuul:latest eekamak/zuul:latest
-      - sudo docker push eekamak/zuul:latest
-
+acceptance_testing:
+  compose_file_path: /src/test/resources
+  compose_file_name: docker-compose.yml
+  
+  service_virtualization:
+    mari_file_path: src/test/resources/service-virtualization/VirtualServices
+    mari_file_names:
+      - catalog.mari
+  
   tests:
-    - test_commands:
-      - mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
-      type: parallel
-      test_services:
-        selenium_grid: true
-        owasp_zap: true
-#        service_virtualization: true
-#    - test_commands:
-#      - true
-#      - true
-#      - true
-#      type: serial
-#      test_services:
-#        selenium_grid: true
-#        service_virtualization: false
-    
+    go_cd_agent_props:
+      - java:8
+      - maven
+    type: parallel
+    test_services:
+      owasp_zap: true
+      selenium_grid: false
+      service_virtualization: true
+    run:
+      - test_commands:
+        - cmd:
+          - mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
+      - test_commands:
+        - cmd:
+          - mvn -P robot 3
+          - mvn -P robot 4
+          
   selenium_grid_browsers:
     - name: chrome
       amount: 1
@@ -52,10 +49,22 @@ acceptance_testing:
     - name: firefox
       amount: 1
       version: "latest"
-
-#  service_virtualization:
-#    mari_file_path: src/test/resources/service-virtualization/VirtualServices
-#    mari_file_names:
-#      - bookapprest.mari
-
-
+  
+  cron_timer: 0 0 22 ? * MON-FRI
+  
+post_stage:
+  go_cd_agent_props:
+    - java:8
+    - maven
+  custom_cmd:
+    - sudo docker login -u eekamak -p $passu
+    - sudo docker tag catalog:latest eekamak/catalog:latest
+    - sudo docker push eekamak/catalog:latest
+    - sudo docker tag customer:latest eekamak/customer:latest
+    - sudo docker push eekamak/customer:latest
+    - sudo docker tag order:latest eekamak/order:latest
+    - sudo docker push eekamak/order:latest
+    - sudo docker tag eureka:latest eekamak/eureka:latest
+    - sudo docker push eekamak/eureka:latest
+    - sudo docker tag zuul:latest eekamak/zuul:latest
+    - sudo docker push eekamak/zuul:latest
