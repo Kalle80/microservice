@@ -1,20 +1,35 @@
 general:
   whitelist: true
+  pipeline_base_name: Order
+#  dependency:
+#   - Pipeline X [Stage X]
+#   - Pipeline Y [Stage Y]
   
-compile_and_unit_tests:
-  build_cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
-  build_path: .
+#pre_stage:
+#  go_cd_agent_props:
+#    - java:8
+#    - maven
+#  custom_cmd:
+#    - true
+#    - true
+  
+compile:
   go_cd_agent_props:
     - java:8
     - maven
   sonarqube: true
+  type: parallel
+  execute:
+    - commands:
+      - cmd:
+        - mvn clean -Djava.security.egd=file:/dev/./urandom install
+        - docker build -f Dockerfile -t order:$GO_REVISION_ORDER .
+        build_path: .
+#      - cmd:
+#        - true
+#        - true
+#        build_path: .
   
-docker_image_build_for_integration_testing:
-  build_path: .
-  dockerfile_name: Dockerfile
-  image_name: order
-  image_tag: $GO_REVISION_ORDER
-
 integration_testing:
   compose_file_path: /src/test/resources
   compose_file_name: docker-compose.yml
@@ -25,11 +40,28 @@ integration_testing:
       - catalog.mari
       
   tests:
-    - test_commands:
-      - mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
-      type: parallel
-      test_services:
-        selenium_grid: false
-        service_virtualization: true
+    go_cd_agent_props:
+      - java:8
+      - maven
+    type: parallel
+    test_services:
+      selenium_grid: false
+      service_virtualization: true
+    run:
+      - test_commands:
+        - cmd:
+          - mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+#          - mvn -P robot 2
+#      - test_commands:
+#        - cmd:
+#          - mvn -P robot 3
+#          - mvn -P robot 4
+  
+post_stage:
+  go_cd_agent_props:
+    - java:8
+    - maven
+  custom_cmd:
+      - sudo docker login -u eekamak -p $passu
+      - sudo docker tag customer:$GO_REVISION_CUSTOMER customer:latest
 
-    
