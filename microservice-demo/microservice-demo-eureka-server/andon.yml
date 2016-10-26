@@ -1,16 +1,66 @@
 general:
   whitelist: true
+  pipeline_base_name: Eureka
+#  dependency:
+#   - Pipeline X [Stage X]
+#   - Pipeline Y [Stage Y]
   
-compile_and_unit_tests: 
-  build_cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
-  build_path: .
+#pre_stage:
+#  go_cd_agent_props:
+#    - java:8
+#    - maven
+#  custom_cmd:
+#    - true
+#    - true
+  
+compile:
   go_cd_agent_props:
     - java:8
     - maven
   sonarqube: true
+  type: parallel
+  execute:
+    - commands:
+      - cmd:
+        - mvn clean -Djava.security.egd=file:/dev/./urandom install
+#        - true
+        build_path: .
+#      - cmd:
+#        - true
+#        - true
+#        build_path: .
   
-docker_image_build_for_integration_testing:
-  build_path: .
-  dockerfile_name: Dockerfile
-  image_name: eureka
-  image_tag: $GO_REVISION_EUREKA
+#integration_testing:
+#  compose_file_path: /src/test/resources
+#  compose_file_name: docker-compose.yml
+  
+#  service_virtualization:
+#    mari_file_path: src/test/resources/service-virtualization/VirtualServices
+#    mari_file_names:
+#      - catalog.mari
+#  tests:
+#    go_cd_agent_props:
+#      - java:8
+#      - maven
+#    type: parallel
+#    test_services:
+#      selenium_grid: false
+#      service_virtualization: true
+#    run:
+#      - test_commands:
+#        - cmd:
+#          - mvn -P robot 1
+#          - mvn -P robot 2
+#      - test_commands:
+#        - cmd:
+#          - mvn -P robot 3
+#          - mvn -P robot 4
+  
+#post_stage:
+#  go_cd_agent_props:
+#    - java:8
+#    - maven
+#  custom_cmd:
+#    - true
+#    - true
+  
