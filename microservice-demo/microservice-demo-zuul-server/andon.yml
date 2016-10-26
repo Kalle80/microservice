@@ -5,13 +5,13 @@ general:
 #   - Pipeline X [Stage X]
 #   - Pipeline Y [Stage Y]
   
-pre_stage:
-  go_cd_agent_props:
-    - java:8
-    - maven
-  custom_cmd:
-    - true
-    - true
+#pre_stage:
+#  go_cd_agent_props:
+#    - java:8
+#    - maven
+#  custom_cmd:
+#    - true
+#    - true
   
 compile:
   go_cd_agent_props:
@@ -23,43 +23,43 @@ compile:
     - commands:
       - cmd:
         - mvn clean -Djava.security.egd=file:/dev/./urandom install
-        - true
+#        - true
         build_path: .
-      - cmd:
-        - true
-        - true
-        build_path: .
+#      - cmd:
+#        - true
+#        - true
+#        build_path: .
   
-integration_testing:
-  compose_file_path: /src/test/resources
-  compose_file_name: docker-compose.yml
+#integration_testing:
+#  compose_file_path: /src/test/resources
+#  compose_file_name: docker-compose.yml
   
-  service_virtualization:
-    mari_file_path: src/test/resources/service-virtualization/VirtualServices
-    mari_file_names:
-      - catalog.mari
-  tests:
-    go_cd_agent_props:
-      - java:8
-      - maven
-    type: parallel
-    test_services:
-      selenium_grid: false
-      service_virtualization: true
-    run:
-      - test_commands:
-        - cmd:
-          - mvn -P robot 1
-          - mvn -P robot 2
-      - test_commands:
-        - cmd:
-          - mvn -P robot 3
-          - mvn -P robot 4
+#  service_virtualization:
+#    mari_file_path: src/test/resources/service-virtualization/VirtualServices
+#    mari_file_names:
+#      - catalog.mari
+#  tests:
+#    go_cd_agent_props:
+#      - java:8
+#      - maven
+#    type: parallel
+#    test_services:
+#      selenium_grid: false
+#      service_virtualization: true
+#    run:
+#      - test_commands:
+#        - cmd:
+#          - mvn -P robot 1
+#          - mvn -P robot 2
+#      - test_commands:
+#        - cmd:
+#          - mvn -P robot 3
+#          - mvn -P robot 4
   
-post_stage:
-  go_cd_agent_props:
-    - java:8
-    - maven
-  custom_cmd:
-    - true
-    - true
+#post_stage:
+#  go_cd_agent_props:
+#    - java:8
+#    - maven
+#  custom_cmd:
+#    - true
+#    - true
