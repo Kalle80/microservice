@@ -23,7 +23,7 @@ compile:
     - commands:
       - cmd:
         - mvn clean -Djava.security.egd=file:/dev/./urandom install
-        - docker build -f Dockerfile -t catalog:$GO_REVISION_CATALOG
+        - docker build -f Dockerfile -t catalog:$GO_REVISION_CATALOG .
         build_path: .
 #      - cmd:
 #        - true
