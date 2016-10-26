@@ -1,6 +1,6 @@
 general:
   whitelist: true
-  pipeline_base_name: ZUUL
+  pipeline_base_name: Zuul
 #  dependency:
 #   - Pipeline X [Stage X]
 #   - Pipeline Y [Stage Y]
