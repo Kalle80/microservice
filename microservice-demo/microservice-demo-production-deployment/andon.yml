@@ -1,11 +1,12 @@
 general:
+  whitelist: true
   pipeline_base_name: Prod Deployment
-
-production:
   dependency:
    - Microservice_Acceptance [AcceptanceTestStage]
-  trigger_mode: manual
+
+production:
   go_cd_agent_props:
     - ansible
+  trigger_mode: manual
   custom_cmd:
     - ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
