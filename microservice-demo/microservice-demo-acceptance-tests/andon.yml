@@ -2,10 +2,10 @@ general:
   whitelist: true
   pipeline_base_name: Application_X
   dependency:
-   - Catalog [CompileAndUnitTests]
-   - Customer [CompileAndUnitTests]
-   - Order [CompileAndUnitTests]
-   - Zuul [CompileAndUnitTests]
+   - Catalog [Compile]
+   - Customer [Compile]
+   - Order [Compile]
+   - Zuul [Compile]
   
 #pre_stage:
 #  go_cd_agent_props:
