@@ -19,15 +19,12 @@ compile:
     - maven
   sonarqube: true
   type: parallel
-  execute:
-    - commands:
-      - cmd:
-        - mvn clean -Djava.security.egd=file:/dev/./urandom install
-#        - true
+  commands:
+    - tasks:
+      - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
         build_path: .
-#      - cmd:
-#        - true
-#        - true
+#      - cmd: true
+#      - cmd: true
 #        build_path: .
   
 #integration_testing:
@@ -46,15 +43,11 @@ compile:
 #    test_services:
 #      selenium_grid: false
 #      service_virtualization: true
-#    run:
+#    commands:
 #      - test_commands:
-#        - cmd:
-#          - mvn -P robot 1
-#          - mvn -P robot 2
+#        - mvn -P robot 1
 #      - test_commands:
-#        - cmd:
-#          - mvn -P robot 3
-#          - mvn -P robot 4
+#        - mvn -P robot 2
   
 #post_stage:
 #  go_cd_agent_props:
