@@ -1,6 +1,6 @@
 general:
   whitelist: true
-  pipeline_base_name: Application_X
+  pipeline_base_name: Microservice Acceptance
   dependency:
    - Catalog [Compile]
    - Customer [Compile]
