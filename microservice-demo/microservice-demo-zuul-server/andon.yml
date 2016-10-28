@@ -28,7 +28,7 @@ compile:
         build_path: /src/main/java
     - tasks:
       - cmd: true
-        build_path: /src/test/java
+        build_path: /src/main/resources
       - cmd: true
       - cmd: true
   
