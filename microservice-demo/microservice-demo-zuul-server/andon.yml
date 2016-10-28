@@ -18,7 +18,7 @@ compile:
     - java:8
     - maven
   sonarqube: true
-  type: parallel
+  type: serial
   commands:
     - tasks:
       - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
