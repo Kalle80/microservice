@@ -27,10 +27,15 @@ compile:
       - cmd: true
         build_path: /src/main/java
     - tasks:
+      - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
+      - cmd: true
       - cmd: true
         build_path: /src/main/resources
+    - tasks:
+      - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
       - cmd: true
       - cmd: true
+        build_path: /src/main/resources
   
 #integration_testing:
 #  compose_file_path: /src/test/resources
