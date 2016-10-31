@@ -36,6 +36,8 @@ acceptance_testing:
     commands:
       - test_commands:
         - mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
+      - test_commands:
+        - true
 #      - test_commands:
 #        - mvn -P robot 2
           
