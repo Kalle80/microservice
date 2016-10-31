@@ -28,7 +28,7 @@ acceptance_testing:
     go_cd_agent_props:
       - java:8
       - maven
-    type: parallel
+    type: serial
     test_services:
       owasp_zap: true
       selenium_grid: true
