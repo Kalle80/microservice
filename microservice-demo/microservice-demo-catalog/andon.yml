@@ -24,11 +24,9 @@ compile:
       - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
         build_path: .
       job_name: Mvn
-    - tasks:
       - cmd: docker build -f Dockerfile -t catalog:$GO_PIPELINE_COUNTER .
 #      - cmd: true
         build_path: .
-      job_name: docker
   
 integration_testing:
   compose_file_path: /src/test/resources/docker-compose
