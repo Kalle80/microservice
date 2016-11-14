@@ -26,6 +26,7 @@ compile:
       - cmd: docker build -f Dockerfile -t customer:$GO_PIPELINE_COUNTER .
 #      - cmd: true
         build_path: .
+      job_name: MvnAndDocker
   
 integration_testing:
   compose_file_path: /src/test/resources/docker-compose
@@ -49,6 +50,7 @@ integration_testing:
     commands:
       - test_commands:
         - mvn -P Robot -D service_url=http://customer:8080 install
+        job_name RobotTest
 #      - test_commands:
 #        - true
   
