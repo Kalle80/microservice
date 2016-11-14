@@ -51,8 +51,9 @@ integration_testing:
       - test_commands:
         - mvn -P Robot -D service_url=http://catalog:8080 install
         job_name: Robot
-#      - test_commands:
-#        - mvn -P robot 2
+      - test_commands:
+        - mvn -P robot 2
+        job_name: Robot2
   
 post_stage:
   go_cd_agent_props:
