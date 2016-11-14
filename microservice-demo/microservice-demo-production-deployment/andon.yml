@@ -20,6 +20,7 @@ production:
   commands:
     - tasks:
       - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
+      job_name: AnsiblePlaybokRun
 #        build_path: .
 #      - cmd: docker 1
 #      job_name: AnsibleJob
