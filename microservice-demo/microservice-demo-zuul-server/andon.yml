@@ -27,8 +27,8 @@ compile:
         build_path: .
       job_name: CompileJob
     - tasks:
-      - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
-        build_path: /src/main/resources
+      - cmd: true
+#        build_path: /src/main/resources
       job_name: TestCompileJob
   
 #post_stage:
