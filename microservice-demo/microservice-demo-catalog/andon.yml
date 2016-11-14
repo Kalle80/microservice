@@ -52,7 +52,7 @@ integration_testing:
     commands:
       - test_commands:
         - mvn -P Robot -D service_url=http://catalog:8080 install
-      job_name: Robot
+        job_name: Robot
 #      - test_commands:
 #        - mvn -P robot 2
   
