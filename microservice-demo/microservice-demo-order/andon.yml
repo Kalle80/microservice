@@ -25,6 +25,7 @@ compile:
         build_path: .
       - cmd: docker build -f Dockerfile -t order:$GO_PIPELINE_COUNTER .
         build_path: .
+      job_name: MvnAndDocker
   
 integration_testing:
   compose_file_path: /src/test/resources
@@ -49,6 +50,7 @@ integration_testing:
     commands:
       - test_commands:
         - mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+        job_name: ChromeRobotTest
 #      - test_commands:
 #        - mvn -P robot 2
 
