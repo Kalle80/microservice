@@ -25,7 +25,7 @@ compile:
         build_path: .
       - cmd: docker build -f Dockerfile -t zuul:$GO_PIPELINE_COUNTER .
         build_path: .
-       job_name: CompileJob
+      job_name: CompileJob
     - tasks:
       - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
         build_path: /src/main/resources
