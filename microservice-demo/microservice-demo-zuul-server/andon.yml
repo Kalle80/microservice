@@ -26,10 +26,10 @@ compile:
       - cmd: docker build -f Dockerfile -t zuul:$GO_PIPELINE_COUNTER .
         build_path: .
       job_name: CompileJob
-#    - tasks:
-#      - cmd: true
-#        build_path: /src/main/resources
-#      job_name: TestCompileJob
+    - tasks:
+      - cmd: true
+        build_path: /src/main/resources
+      job_name: CompileJob
   
 #post_stage:
 #  go_cd_agent_props:
