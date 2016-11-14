@@ -50,7 +50,7 @@ integration_testing:
     commands:
       - test_commands:
         - mvn -P Robot -D service_url=http://customer:8080 install
-        job_name RobotTest
+        job_name: RobotTest
 #      - test_commands:
 #        - true
   
