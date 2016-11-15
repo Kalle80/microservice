@@ -46,7 +46,7 @@ integration_testing:
       selenium_grid: false
       service_virtualization: false
       robot_framework: true
-      cucumber: false
+      cucumber: true
     commands:
       - test_commands:
         - mvn -P Robot -D service_url=http://catalog:8080 install
