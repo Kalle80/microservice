@@ -29,7 +29,7 @@ compile:
     - tasks:
       - cmd: true
         build_path: /src/main/resources
-      job_name: CompileJob
+      job_name: TestJob
   
 #post_stage:
 #  go_cd_agent_props:
