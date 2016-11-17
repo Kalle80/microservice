@@ -23,8 +23,10 @@ compile:
     - tasks:
       - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
         build_path: .
+        run_if_conditions: any
       - cmd: docker build -f Dockerfile -t order:$GO_PIPELINE_COUNTER .
         build_path: .
+        run_if_conditions: any
       job_name: MvnAndDocker
   
 integration_testing:
@@ -49,10 +51,12 @@ integration_testing:
       cucumber: false
     commands:
       - test_commands:
-        - mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+        - cmd: mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+          build_path: .
+          run_if_conditions: any
         job_name: ChromeRobotTest
 #      - test_commands:
-#        - mvn -P robot 2
+#        - cmd: mvn -P robot 2
 
 #  selenium_grid_browsers:
 #    - name: chrome
