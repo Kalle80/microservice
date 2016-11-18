@@ -22,9 +22,9 @@ compile:
   commands:
     - tasks:
       - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
-        build_path: .
-        run_if_conditions: any
-      job_name: BuildJob
+#        build_path: .
+#        run_if_conditions: any
+#      job_name: BuildJob
 #      - cmd: true
 #      - cmd: true
 #        build_path: .
