@@ -7,13 +7,13 @@ general:
    - Order [IntegrationTests]
    - Zuul [Compile]
   
-#pre_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - maven
-#  custom_cmd:
-#    - true
-#    - true
+pre_stage:
+  go_cd_agent_props:
+    - java:8
+    - maven
+  custom_cmd:
+    - true
+    - true
   
 acceptance_testing:
   compose_file_path: /src/test/resources
