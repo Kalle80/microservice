@@ -66,10 +66,10 @@ integration_testing:
 #      amount: 1
 #      version: "latest"
 
-#post_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - maven
-#  custom_cmd:
-#      - sudo docker login -u eekamak -p $passu
-#      - sudo docker tag customer:$GO_REVISION_CUSTOMER customer:latest
+post_stage:
+  go_cd_agent_props:
+    - java:8
+    - maven
+  custom_cmd:
+      - sudo docker login -u eekamak -p $passu
+      - sudo docker tag order:$GO_PIPELINE_COUNTER order:latest
