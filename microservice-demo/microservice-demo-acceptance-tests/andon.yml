@@ -53,10 +53,10 @@ acceptance_testing:
           
   selenium_grid_browsers:
     - name: chrome
-      amount: 3
+      amount: 1
       version: "2.52.0"
     - name: firefox
-      amount: 3
+      amount: 1
       version: "latest"
   
 #  cron_timer: 0 0 22 ? * MON-FRI
