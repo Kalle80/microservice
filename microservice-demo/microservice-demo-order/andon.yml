@@ -45,7 +45,7 @@ integration_testing:
     type: parallel
     test_services:
       owasp_zap: false
-      selenium_grid: false
+      selenium_grid: true
       service_virtualization: true
       robot_framework: true
       cucumber: false
@@ -59,13 +59,13 @@ integration_testing:
 #      - test_commands:
 #        - cmd: mvn -P robot 2
 
-#  selenium_grid_browsers:
-#    - name: chrome
-#      amount: 1
-#      version: "latest"
-#    - name: firefox
-#      amount: 1
-#      version: "latest"
+  selenium_grid_browsers:
+    - name: chrome
+      amount: 1
+      version: "latest"
+    - name: firefox
+      amount: 1
+      version: "latest"
 
 post_stage:
   go_cd_agent_props:

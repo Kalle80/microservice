@@ -10,15 +10,17 @@ services:
     ports:
     - "9001:8080"
     command: /usr/bin/java -Xmx400m -Xms400m -Djava.security.egd=file:/dev/./urandom -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Dcustomer.service.host=customer -Dcustomer.service.port=8080 -Dcatalog.service.host=vse -Dcatalog.service.port=8001 -jar microservice-demo-order-0.0.1-SNAPSHOT.jar
-  hub:
-    image: selenium/hub:latest
-    ports:
-      - "4444:4444"
-    expose:
-      - "4444"
-  chrome:
-    image: selenium/node-chrome:latest
-    expose:
-      - "5555"
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
+#  hub:
+#    image: selenium/hub:latest
+#    ports:
+#      - "4444:4444"
+#    expose:
+#      - "4444"
+#  chrome:
+#    image: selenium/node-chrome:latest
+#    expose:
+#      - "5555"
+#    environment:
+#      - HUB_PORT_4444_TCP_ADDR=hub
+#      - HUB_PORT_4444_TCP_PORT=4444
+      
