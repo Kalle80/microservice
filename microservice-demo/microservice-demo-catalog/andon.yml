@@ -61,9 +61,8 @@ integration_testing:
   
 post_stage:
   go_cd_agent_props:
-#    - java:8
-#    - maven
-    - customsupport
+    - java:8
+    - maven
   custom_cmd:
       - sudo docker login -u eekamak -p $passu
       - sudo docker tag catalog:$GO_PIPELINE_COUNTER catalog:latest
