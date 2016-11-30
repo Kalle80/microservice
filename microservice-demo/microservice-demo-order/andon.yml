@@ -59,7 +59,9 @@ integration_testing:
 #      - test_commands:
 #        - cmd: mvn -P robot 2
 
-  selenium_grid_browsers:
+  selenium:
+    version: "2.53.0"
+    browsers:
     - name: chrome
       amount: 1
       version: "latest"

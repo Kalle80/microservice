@@ -57,7 +57,7 @@ acceptance_testing:
   selenium_grid_browsers:
     - name: chrome
       amount: 1
-      version: "2.52.0"
+      version: "latest"
     - name: firefox
       amount: 1
       version: "latest"
