@@ -33,11 +33,11 @@ compile:
 #        build_path: /src/main/resources
 #      job_name: TestJob
   
-#post_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - maven
-#  custom_cmd:
-#    - true
-#    - true
+post_stage:
+  go_cd_agent_props:
+    - custom
+    - maven
+  custom_cmd:
+    - true
+    - true
   
