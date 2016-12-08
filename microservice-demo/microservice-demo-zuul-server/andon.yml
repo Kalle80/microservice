@@ -44,7 +44,7 @@ compile:
   
 post_stage:
   go_cd_agent_props:
-    - python:3.5
+    - python:2.7
   custom_cmd:
     - python -V
   
