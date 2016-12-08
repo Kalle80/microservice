@@ -33,18 +33,18 @@ compile:
 #        build_path: /src/main/resources
 #      job_name: TestJob
   
-#post_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - clojure
-#    - leiningen
-#  custom_cmd:
-#    - lein -v
-#    - clojure
-  
 post_stage:
   go_cd_agent_props:
-    - python:3.5
+    - java:8
+#    - clojure
+    - leiningen
   custom_cmd:
-    - python -V
+    - lein -v
+    - clojure
+  
+#post_stage:
+#  go_cd_agent_props:
+#    - python:3.5
+#  custom_cmd:
+#    - python -V
   
