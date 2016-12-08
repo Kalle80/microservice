@@ -36,8 +36,7 @@ compile:
 post_stage:
   go_cd_agent_props:
     - java:8
-    - clojure
-    - leiningen
+    - clojure_leiningen
   custom_cmd:
     - lein -v
     - clojure
