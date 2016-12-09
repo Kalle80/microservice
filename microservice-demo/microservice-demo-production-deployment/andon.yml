@@ -1,8 +1,8 @@
 general:
   whitelist: true
   pipeline_base_name: Prod Deployment
-#  dependency:
-#   - Microservice_Acceptance [PostStage]
+  dependency:
+   - Microservice_Acceptance [PostStage]
 
 #pre_stage:
 #  go_cd_agent_props:
@@ -14,15 +14,12 @@ general:
 
 production:
   go_cd_agent_props:
-#    - ansible
-    - leiningen
-    - java:8
-  trigger_mode: automatic
+    - ansible
+  trigger_mode: manual
   type: parallel
   commands:
     - tasks:
-      - cmd: lein -v
-#      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
+      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
 #        build_path: .
 #        run_if_conditions: failed
       job_name: AnsiblePlaybookRun
