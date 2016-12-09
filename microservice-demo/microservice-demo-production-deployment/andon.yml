@@ -4,24 +4,22 @@ general:
   dependency:
    - Microservice_Acceptance [PostStage]
 
-pre_stage:
-  go_cd_agent_props:
-    - java:8
-    - clojure
+#pre_stage:
+#  go_cd_agent_props:
+#    - java:8
 #    - maven
-  custom_cmd:
-    - lein -v
+#  custom_cmd:
+#    - true
 #    - true
 
 production:
   go_cd_agent_props:
     - ansible
-  trigger_mode: automatic
+  trigger_mode: manual
   type: parallel
   commands:
     - tasks:
-      - cmd: true
-#      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
+      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
 #        build_path: .
 #        run_if_conditions: failed
       job_name: AnsiblePlaybookRun
@@ -35,11 +33,10 @@ production:
 #        build_path: .
 #      job_name: RunJob
 
-post_stage:
-  go_cd_agent_props:
-    - java:8
-    - leiningen
+#post_stage:
+#  go_cd_agent_props:
+#    - java:8
 #    - maven
-  custom_cmd:
-    - lein -v
+#  custom_cmd:
+#    - true
 #    - true
