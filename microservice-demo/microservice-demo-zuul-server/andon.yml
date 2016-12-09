@@ -5,27 +5,28 @@ general:
 #   - Pipeline X [Stage X]
 #   - Pipeline Y [Stage Y]
   
-pre_stage:
-  go_cd_agent_props:
-#    - leiningen
-    - clojure
-    - java:8
-  custom_cmd:
-    - lein -v
-    - clojure
+#pre_stage:
+#  go_cd_agent_props:
+#    - java:8
+#    - maven
+#  custom_cmd:
+#    - true
+#    - true
   
 compile:
   go_cd_agent_props:
     - java:8
-    - maven
+#    - maven
+    - leiningen
   sonarqube: true
   type: parallel
   commands:
     - tasks:
-      - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
+      - cmd: lein -v
+#      - cmd: mvn clean -Djava.security.egd=file:/dev/./urandom install
 #        build_path: .
 #        run_if_conditions: any
-      - cmd: docker build -f Dockerfile -t zuul:$GO_PIPELINE_COUNTER .
+#      - cmd: docker build -f Dockerfile -t zuul:$GO_PIPELINE_COUNTER .
 #        build_path: .
 #        run_if_conditions: any
 #      job_name: CompileJob

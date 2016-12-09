@@ -41,8 +41,7 @@ integration_testing:
   tests:
     go_cd_agent_props:
       - java:8
-#      - maven
-      - clojure
+      - maven
     type: parallel
     test_services:
       owasp_zap: false
@@ -52,8 +51,8 @@ integration_testing:
       cucumber: false
     commands:
       - test_commands:
-        - cmd: lein -v
-#        - cmd: mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+#        - cmd: true
+        - cmd: mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
 #          build_path: .
 #          run_if_conditions: any
         job_name: ChromeRobotTest
