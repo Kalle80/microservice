@@ -5,13 +5,14 @@ general:
 #   - Pipeline X [Stage X]
 #   - Pipeline Y [Stage Y]
   
-#pre_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - maven
-#  custom_cmd:
-#    - true
-#    - true
+pre_stage:
+  go_cd_agent_props:
+#    - leiningen
+    - clojure
+    - java:8
+  custom_cmd:
+    - lein -v
+    - clojure
   
 compile:
   go_cd_agent_props:
@@ -33,14 +34,14 @@ compile:
 #        build_path: /src/main/resources
 #      job_name: TestJob
   
-post_stage:
-  go_cd_agent_props:
+#post_stage:
+#  go_cd_agent_props:
 #    - leiningen
-    - clojure
-    - java:8
-  custom_cmd:
-    - lein -v
-    - clojure
+#    - clojure
+#    - java:8
+#  custom_cmd:
+#    - lein -v
+#    - clojure
   
 #post_stage:
 #  go_cd_agent_props:
