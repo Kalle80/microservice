@@ -20,7 +20,7 @@ production:
   type: parallel
   commands:
     - tasks:
-      -cmd true
+      - cmd: true
 #      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
 #        build_path: .
 #        run_if_conditions: failed
