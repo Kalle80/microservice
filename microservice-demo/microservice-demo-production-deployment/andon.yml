@@ -14,12 +14,15 @@ general:
 
 production:
   go_cd_agent_props:
-    - ansible
-  trigger_mode: manual
+#    - ansible
+    - leiningen
+    - java:8
+  trigger_mode: automatic
   type: parallel
   commands:
     - tasks:
-      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
+      - cmd: lein -v
+#      - cmd: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
 #        build_path: .
 #        run_if_conditions: failed
       job_name: AnsiblePlaybookRun

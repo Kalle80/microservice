@@ -27,8 +27,7 @@ acceptance_testing:
   tests:
     go_cd_agent_props:
       - java:8
-#      - maven
-      - clojure
+      - maven
     type: parallel
     test_services:
       owasp_zap: true
@@ -38,9 +37,9 @@ acceptance_testing:
       cucumber: false
     commands:
       - test_commands:
-        - cmd: lein -v
+#        - cmd: true
 #        - cmd: mvn clean -Probot -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
-#        - cmd: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
+        - cmd: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
 #          build_path: .
 #          run_if_conditions: passed
         job_name: Chrome
