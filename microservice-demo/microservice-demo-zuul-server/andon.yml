@@ -7,11 +7,11 @@ general:
   
 pre_stage:
   go_cd_agent_props:
-#    - java:8
+    - java:8
 #    - maven
-    - python:2.7
+    - leiningen
   custom_cmd:
-    - true
+    - lein -v
     - true
   
 compile:
@@ -34,13 +34,13 @@ compile:
 #        build_path: /src/main/resources
 #      job_name: TestJob
   
-#post_stage:
-#  go_cd_agent_props:
-#    - java7
-#    - android
-#  custom_cmd:
-#    - gradle -v
-#    - android --help
+post_stage:
+  go_cd_agent_props:
+    - java:7
+    - android
+  custom_cmd:
+    - gradle -v
+    - android --help
   
 #post_stage:
 #  go_cd_agent_props:
