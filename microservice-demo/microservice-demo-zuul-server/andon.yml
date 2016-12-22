@@ -28,10 +28,10 @@ compile:
 #        build_path: .
 #        run_if_conditions: any
       job_name: CompileJob
-#    - tasks:
-#      - cmd: true
+    - tasks:
+      - cmd: true
 #        build_path: /src/main/resources
-#      job_name: TestJob
+      job_name: TestJob
   
 #post_stage:
 #  go_cd_agent_props:
