@@ -27,15 +27,15 @@ compile:
           tasks: # ordered list of tasks to execute in job Maven build
             - task: mvn clean -Djava.security.egd=file:/dev/./urandom install
             - task: docker build -f Dockerfile -t zuul:$GO_PIPELINE_COUNTER .
-    - stage: Docker build
+    - stage: Dockerbuild
       jobs:
-        - job: Dokcer build eka
+        - job: Dokcerbuildeka
           build_path: .
           run_if_conditions: failed
           tasks: # ordered list of tasks to execute in job Docker_build_eka
             - task: true
             - task: true
-        - job: Docker build toka
+        - job: Dockerbuildtoka
           tasks: # ordered list of tasks to execute in job Docker_build_toke
             - task: true
             - task: true
