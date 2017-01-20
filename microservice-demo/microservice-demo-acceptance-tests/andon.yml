@@ -1,11 +1,11 @@
 general:
   whitelist: true
   pipeline_base_name: Microservice Acceptance
-  dependency:
-   - Catalog [PostStage]
-   - Customer [PostStage]
-   - Order [IntegrationTests]
-   - Zuul [Compile]
+#  dependency:
+#   - Catalog [PostStage]
+#   - Customer [PostStage]
+#   - Order [IntegrationTests]
+#   - Zuul [Compile]
   
 #pre_stage:
 #  go_cd_agent_props:
