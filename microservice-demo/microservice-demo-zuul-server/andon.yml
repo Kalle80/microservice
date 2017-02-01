@@ -17,7 +17,7 @@ compile:
   go_cd_agent_props:
     - java:8
     - maven
-  sonarqube: true
+  sonarqube: false
   stages:
     - stage: Compile
       jobs:
