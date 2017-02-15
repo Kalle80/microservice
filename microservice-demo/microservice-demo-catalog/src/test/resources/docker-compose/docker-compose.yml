@@ -16,6 +16,3 @@ services:
       - "8080"
 #    links:
 #     - eureka
-#networks:
-#  default:
-#    external: andon_andon-network
