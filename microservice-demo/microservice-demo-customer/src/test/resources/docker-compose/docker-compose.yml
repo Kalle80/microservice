@@ -8,6 +8,7 @@ services:
      - eureka
     expose:
      - "8080"
+     
 networks:
   default:
     external: andon_andon-network
