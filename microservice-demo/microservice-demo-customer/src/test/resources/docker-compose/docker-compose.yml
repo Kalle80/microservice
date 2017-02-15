@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 services:
   eureka:
     image: eekamak/eureka:latest
@@ -10,4 +10,5 @@ services:
       - "8080"
 networks:
   default:
-    external: 'andon_andon-network'
+    external: "andon_andon-network"
+    
