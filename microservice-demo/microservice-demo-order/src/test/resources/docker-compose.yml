@@ -10,6 +10,3 @@ services:
     ports:
       - "9001:8080"
     command: /usr/bin/java -Xmx400m -Xms400m -Djava.security.egd=file:/dev/./urandom -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Dcustomer.service.host=customer -Dcustomer.service.port=8080 -Dcatalog.service.host=vse -Dcatalog.service.port=8001 -jar microservice-demo-order-0.0.1-SNAPSHOT.jar
-networks:
-  default:
-    external: andon_andon-network

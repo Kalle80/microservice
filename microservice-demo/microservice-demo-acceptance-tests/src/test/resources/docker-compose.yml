@@ -34,7 +34,3 @@ services:
 #     - eureka
 #    ports:
 #      - "8989:8989"
-
-networks:
-  default:
-    external: andon_andon-network
