@@ -5,9 +5,9 @@ services:
   customer:
     image: customer:$GO_PIPELINE_COUNTER
     links:
-     - eureka
+      - eureka
     expose:
-     - "8080"
+      - "8080"
      
 networks:
   default:
