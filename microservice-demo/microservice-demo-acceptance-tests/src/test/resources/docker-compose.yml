@@ -5,25 +5,25 @@ services:
     expose:
       - "8761"
   customer:
-    image: customer:$GO_DEPENDENCY_LABEL_CUSTOMER_MASTER
+    image: customer:$GO_DEPENDENCY_LABEL_CUSTOMER_SWARM
     expose:
       - "8080"
     links:
      - eureka
   catalog:
-    image: catalog:$GO_DEPENDENCY_LABEL_CATALOG_MASTER
+    image: catalog:$GO_DEPENDENCY_LABEL_CATALOG_SWARM
     expose:
       - "8080"
     links:
      - eureka
   order:
-    image: order:$GO_DEPENDENCY_LABEL_ORDER_MASTER
+    image: order:$GO_DEPENDENCY_LABEL_ORDER_SWARM
     expose:
       - "8080"
     links:
      - eureka
   zuul:
-    image: zuul:$GO_DEPENDENCY_LABEL_ZUUL_MASTER
+    image: zuul:$GO_DEPENDENCY_LABEL_ZUUL_SWARM
     links:
      - eureka
     expose:

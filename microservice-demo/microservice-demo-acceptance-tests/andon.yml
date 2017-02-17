@@ -67,13 +67,13 @@ post_stage:
     - maven
   custom_cmd:
     - sudo docker login -u eekamak -p $passu
-    - sudo docker tag catalog:$GO_DEPENDENCY_LABEL_CATALOG_MASTER eekamak/catalog:latest
+    - sudo docker tag catalog:$GO_DEPENDENCY_LABEL_CATALOG_SWARM eekamak/catalog:latest
     - sudo docker push eekamak/catalog:latest
-    - sudo docker tag customer:$GO_DEPENDENCY_LABEL_CUSTOMER_MASTER eekamak/customer:latest
+    - sudo docker tag customer:$GO_DEPENDENCY_LABEL_CUSTOMER_SWARM eekamak/customer:latest
     - sudo docker push eekamak/customer:latest
-    - sudo docker tag order:$GO_DEPENDENCY_LABEL_ORDER_MASTER eekamak/order:latest
+    - sudo docker tag order:$GO_DEPENDENCY_LABEL_ORDER_SWARM eekamak/order:latest
     - sudo docker push eekamak/order:latest
 #    - sudo docker tag eureka:latest eekamak/eureka:latest
 #    - sudo docker push eekamak/eureka:latest
-    - sudo docker tag zuul:$GO_DEPENDENCY_LABEL_ZUUL_MASTER eekamak/zuul:latest
+    - sudo docker tag zuul:$GO_DEPENDENCY_LABEL_ZUUL_SWARM eekamak/zuul:latest
     - sudo docker push eekamak/zuul:latest
