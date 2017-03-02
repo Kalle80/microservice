@@ -32,13 +32,15 @@ acceptance_testing:
       robot_framework: true
       cucumber: false
     stages:
-      - stage: AcceptanceTesting
+      - stage: AcceptanceTestingBrowserStack
         jobs:
           - job: BrowserStack_IE
             tasks:
               - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:qcGwaiyQpFFibmBoyEp3@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browser:IE,browser_version:11.0,os:Windows,os_version:7,resolution:1024x768,browserstack.local:True" clean install
+      - stage: AcceptanceTestingSeleniumGrid
+        jobs:
           - job: SeleniumGrid_Chrome
-             tasks:
+            tasks:
               - task: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
 
   selenium:
