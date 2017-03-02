@@ -45,31 +45,27 @@ integration_testing:
       - maven
     test_services:
       owasp_zap: false
-      selenium_grid: true
       service_virtualization: true
       robot_framework: true
       cucumber: false
-#      browser_stack:
-#        key: HEA8tMFKN6bSUyhBriQD
-#        local_identifier: andon1
     stages:
       - stage: IntegrationTests
         jobs:
           - job: Robot
+            selenium_grid: true
+            browser_stack: false
             tasks:
               - task: mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
                 build_path: .
                 run_if_conditions: passed
 
   selenium:
-#    version: "latest"
+    version: "2.53.1"
     browsers:
     - name: chrome
       amount: 1
-      version: "latest"
     - name: firefox
       amount: 1
-      version: "latest"
 
 post_stage:
   go_cd_agent_props:
