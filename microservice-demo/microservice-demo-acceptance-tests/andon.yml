@@ -27,7 +27,7 @@ acceptance_testing:
       owasp_zap: true
       selenium_grid: true
       browser_stack:
-        key: qcGwaiyQpFFibmBoyEp3
+        key: $BS_KEY
       service_virtualization: false
       robot_framework: true
       cucumber: false
@@ -36,18 +36,18 @@ acceptance_testing:
         jobs:
           - job: BrowserStack_IE
             tasks:
-              - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:qcGwaiyQpFFibmBoyEp3@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browser:IE,browser_version:11.0,os:Windows,os_version:7,resolution:1024x768,browserstack.local:True" clean install
-          - job: SeleniumGrid_Chrome
-            tasks:
-              - task: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
+              - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:$BS_KEY@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browser:IE,browser_version:11.0,os:Windows,os_version:7,resolution:1024x768,browserstack.local:True" clean install
+#          - job: SeleniumGrid_Chrome
+#            tasks:
+#              - task: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
 
-  selenium:
-    version: "2.53.1"
-    browsers:
-    - name: chrome
-      amount: 1
-    - name: firefox
-      amount: 1
+#  selenium:
+#    version: "2.53.1"
+#    browsers:
+#    - name: chrome
+#      amount: 1
+#    - name: firefox
+#      amount: 1
 
   
 #  cron_timer: 0 0 22 ? * MON-FRI
