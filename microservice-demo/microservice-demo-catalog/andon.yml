@@ -44,7 +44,6 @@ integration_testing:
       - maven
     test_services:
       owasp_zap: false
-      selenium_grid: false
       service_virtualization: false
       robot_framework: true
       cucumber: false
@@ -52,6 +51,7 @@ integration_testing:
       - stage: IntegrationTesting
         jobs:
           - job: Robot
+            selenium_grid: false
             tasks:
               - task: mvn -P Robot -D service_url=http://catalog:8080 install
                 build_path: .
