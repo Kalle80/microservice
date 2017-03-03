@@ -43,7 +43,6 @@ integration_testing:
       - java:8
       - maven
     test_services:
-      owasp_zap: false
       service_virtualization: false
       robot_framework: true
       cucumber: false
