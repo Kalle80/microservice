@@ -12,7 +12,7 @@
   - include: tasks/login.yml
 
   - name: Deploy Ubuntu instance to Tieto Public TDS
-    uri: >
+    uri:
       url: "{{ tds_url }}/tenants/{{ tenant_id }}/instances"
       validate_certs: False
       method: POST
