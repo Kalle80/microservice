@@ -4,31 +4,29 @@ general:
   dependency:
    - Microservice_Acceptance [PostStage]
 
-#pre_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - maven
-#  custom_cmd:
-#    - true
-#    - true
+pre_stage:
+  custom_cmd:
+   - ansible-galaxy install franklinkim.docker-compose
 
 production:
   go_cd_agent_props:
     - ansible
   trigger_mode: manual
   stages:
-    - stage: Production
+    - stage: Deploy
       jobs:
-        - job: Ansible
+        - job: CreateAndDeployInstance
           tasks:
-            - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/microservice-playbook.yml
+            - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/deploy-instance.yml
               build_path: .
               run_if_conditions: passed
-
-#post_stage:
-#  go_cd_agent_props:
-#    - java:8
-#    - maven
-#  custom_cmd:
-#    - true
-#    - true
+            - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/install-microservice-demo.yml
+              build_path: .
+              run_if_conditions: passed
+    - stage: DeleteInstance
+      jobs:
+        - job: Delete
+          tasks:
+            - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/delete-instance.yml
+              build_path: .
+              run_if_conditions: passed
