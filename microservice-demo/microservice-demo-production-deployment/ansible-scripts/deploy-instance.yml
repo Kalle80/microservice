@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    - ubuntu_json: "{{ lookup('file','ubuntuDocker.json') | from_json}}"
+    - ubuntu_json: "{{ lookup('file','ubuntuDocker.json') | to_json}}"
     - tds_username: "{{ lookup('env','tds_username') }}"
     - tds_password: "{{ lookup('env','tds_password') }}"
     - tenant_id: "{{lookup('env','tenant_id')}}"
