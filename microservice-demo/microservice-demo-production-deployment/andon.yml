@@ -6,7 +6,7 @@ general:
 
 pre_stage:
   custom_cmd:
-   - ansible-galaxy install franklinkim.docker-compose
+   - /usr/bin/ansible-galaxy install franklinkim.docker-compose
 
 production:
   go_cd_agent_props:
