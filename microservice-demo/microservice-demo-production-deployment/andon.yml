@@ -17,7 +17,7 @@ production:
       jobs:
         - job: CreateAndDeployInstance
           tasks:
-            - task: ansible-galaxy install franklinkim.docker-compose
+            - task: sudo ansible-galaxy install franklinkim.docker-compose
             - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/deploy-instance.yml
               build_path: .
               run_if_conditions: passed
