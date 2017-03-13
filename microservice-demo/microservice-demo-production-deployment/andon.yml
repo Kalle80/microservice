@@ -4,19 +4,20 @@ general:
   dependency:
    - Microservice_Acceptance [PostStage]
 
-pre_stage:
-  custom_cmd:
-   - /usr/bin/ansible-galaxy install franklinkim.docker-compose
+# pre_stage:
+#   custom_cmd:
+#    - /usr/bin/ansible-galaxy install franklinkim.docker-compose
 
 production:
   go_cd_agent_props:
     - ansible
   trigger_mode: manual
   stages:
-    - stage: Deploy
+    - stage: DeployInstance
       jobs:
         - job: CreateAndDeployInstance
           tasks:
+            - task: ansible-galaxy install franklinkim.docker-compose
             - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/deploy-instance.yml
               build_path: .
               run_if_conditions: passed
