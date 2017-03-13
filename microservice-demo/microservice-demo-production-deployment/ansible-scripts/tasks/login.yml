@@ -1,0 +1,13 @@
+---
+- name: Login to AndonDev Product Space in TDC
+  uri:
+    url: "{{ tds_url }}/backend/login"
+    validate_certs: False
+    method: POST
+    body_format: json
+    body: {"username": "{{ tds_username }}", "password": "{{ tds_password }}"}
+    return_content: yes
+  register: json_response
+
+- set_fact:
+    auth_token: "{{ (json_response.content|from_json)['token'] }}"

@@ -1,2 +1,4 @@
-andonprod ansible_host=146.148.18.41 ansible_user=ilpo_paju  ansible_connection=ssh ansible_ssh_private_key_file=/etc/andon/ssh_keys/compute-engine-ssh-key
+localhost ansible_connection=local
 
+[tds]
+demo.andondev.pub.tds.tieto.com  ansible_connection=ssh  ansible_user=pajuuilp  ansible_ssh_private_key_file=/Users/ilppaju/.ssh/id_rsa

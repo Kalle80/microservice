@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    - ubuntu_json: "{{ lookup('file','ubuntuDocker.json') }}"
+    - tds_username: "{{ lookup('env','tds_username') }}"
+    - tds_password: "{{ lookup('env','tds_password') }}"
+    - tenant_id: "{{lookup('env','tenant_id')}}"
+    - tds_url: https://backend.mgt.tds.tieto.com
+
+  tasks:
+
+  - include: tasks/login.yml
+
+  - name: Deploy Ubuntu instance to Tieto Public TDS
+    uri:
+      url: "{{ tds_url }}/tenants/{{ tenant_id }}/instances"
+      validate_certs: False
+      method: POST
+      body_format: json
+      body: "{{ ubuntu_json }}"
+      return_content: yes
+      headers: {Authentication: "{{ auth_token }}"}
+      timeout: 60
+    register: json_response
+
+  - debug: var=json_response
+
+  - set_fact:
+      entity_id: "{{ (json_response.content|from_json)[0]['entityid'] }}"
+
+  - name: Wait for Instance
+    wait_for:
+      host: demo.andondev.pub.tds.tieto.com
+      port: 22
+      delay: 10
+      timeout: 600
+      search_regex: "Welcome to Ubuntu"

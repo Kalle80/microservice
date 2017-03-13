@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    - tds_username: "{{ lookup('env','tds_username') }}"
+    - tds_password: "{{ lookup('env','tds_password') }}"
+    - tenant_id: "{{lookup('env','tenant_id')}}"
+    - tds_url: https://backend.mgt.tds.tieto.com
+
+  tasks:
+
+  - include: tasks/login.yml
+
+  - name: Get TDS Instances and Store the Entity Id
+    uri:
+      url: "{{ tds_url }}/tenants/{{ tenant_id }}/instances"
+      validate_certs: False
+      method: GET
+      headers: {Authentication: "{{ auth_token }}"}
+      return_content: yes
+    register: json_response
+
+  - debug: var=json_response.content|from_json
+
+  - set_fact:
+      entity_id: "{{(json_response.content|from_json).0.entityid}}"
+
+  - debug: var=entity_id
+
+  - name: Delete Instance from Tieto Public TDS
+    uri:
+      url: "{{ tds_url }}/tenants/{{ tenant_id }}/instances/{{entity_id}}"
+      validate_certs: False
+      method: DELETE
+      headers: {Authentication: "{{ auth_token }}"}
+      when: (json_response.content|from_json).0.hostname == "demo"
