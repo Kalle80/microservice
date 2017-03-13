@@ -19,7 +19,7 @@
       body_format: json
       body: "{{ lookup('file','ubuntuDocker.json') }}"
       return_content: yes
-      headers: {Authentication: "{{ auth_token }}"}
+      headers: {Authentication: "{{ auth_token }}"; charset=utf-8}
       timeout: 60
     register: json_response
 
