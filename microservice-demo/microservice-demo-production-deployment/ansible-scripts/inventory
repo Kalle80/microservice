@@ -1,4 +1,4 @@
 localhost ansible_connection=local
 
 [tds]
-demo.andondev.pub.tds.tieto.com  ansible_connection=ssh  ansible_user=pajuuilp  ansible_ssh_private_key_file=/Users/ilppaju/.ssh/id_rsa
+demo.andondev.pub.tds.tieto.com  ansible_connection=ssh  ansible_user=pajuuilp  ansible_ssh_private_key_file=/etc/andon/ssh_keys/id_rsa
