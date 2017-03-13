@@ -17,7 +17,7 @@
       validate_certs: False
       method: POST
       body_format: json
-      body: "{{ lookup('file','ubuntuDocker.json')}}"
+      body: "{{ lookup('file','ubuntuDocker.json') | to_json }}"
       return_content: yes
       headers: {Authentication: "{{ auth_token }}"}
       timeout: 60
