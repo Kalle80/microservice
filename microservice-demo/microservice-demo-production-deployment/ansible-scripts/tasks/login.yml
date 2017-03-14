@@ -7,6 +7,7 @@
     body_format: json
     body: {"username": "{{ tds_username }}", "password": "{{ tds_password }}"}
     return_content: yes
+    timout: 60
   register: json_response
 
 - set_fact:
