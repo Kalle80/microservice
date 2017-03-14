@@ -37,6 +37,6 @@
       host: demo.andondev.pub.tds.tieto.com
       port: 22
       delay: 10
-      timeout: 320
+      timeout: 600
       state: started
       search_regex: "SSH-2.0-OpenSSH"
