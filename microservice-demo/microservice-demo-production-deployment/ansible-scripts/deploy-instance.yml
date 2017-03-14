@@ -2,10 +2,13 @@
 - hosts: localhost
   connection: local
   vars:
+    - instance_template: "{{ lookup('template','ubuntuDocker.json') | from_json }}"
     - tds_username: "{{ lookup('env','tds_username') }}"
     - tds_password: "{{ lookup('env','tds_password') }}"
     - tenant_id: "{{lookup('env','tenant_id')}}"
     - tds_url: https://backend.mgt.tds.tieto.com
+    # - ssh_rsa_key: "{{lookup('env','ssh_rsa_key')}}"
+    # - ssh_user: "{{lookup('env','ssh_user')}}"
 
   tasks:
 
@@ -19,11 +22,11 @@
       body_format: json
       body: "{{ lookup('file','ubuntuDocker.json') }}"
       return_content: yes
-      headers: {Authentication: "{{ auth_token }}"; charset=utf-8}
+      headers: {Authentication: "{{ auth_token }}"}
       timeout: 60
     register: json_response
 
-  - debug: var=json_response
+  - debug: var="{{ (json_response.content|from_json) }}"
 
   - set_fact:
       entity_id: "{{ (json_response.content|from_json)[0]['entityid'] }}"
