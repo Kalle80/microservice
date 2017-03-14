@@ -19,7 +19,7 @@
       validate_certs: False
       method: POST
       #body_format: json
-      body: "{{ lookup('template','ubuntuDocker.json') }}"
+      body: "{{ lookup('template','ubuntuDocker.json') | to_json }}"
       headers:
         Authentication: "{{ auth_token }}"
         Content-Type: "application/json"
