@@ -8,8 +8,7 @@ pre_stage:
   go_cd_agent_props:
     - ansible
   custom_cmd:
-    - sudo ansible-galaxy install franklinkim.docker
-    - sudo ansible-galaxy install franklinkim.docker-compose
+    - sudo ansible-galaxy install angstwad.docker_ubuntu
 
 production:
   go_cd_agent_props:
