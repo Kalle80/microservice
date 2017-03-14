@@ -21,10 +21,10 @@ production:
           tasks:
             - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/deploy-instance.yml -vvvv
               build_path: .
-              run_if_conditions: passed
+              # run_if_conditions: passed
             - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/install-microservice-demo.yml -vvvv
               build_path: .
-              run_if_conditions: passed
+              # run_if_conditions: passed
     - stage: DeleteInstance
       jobs:
         - job: Delete
