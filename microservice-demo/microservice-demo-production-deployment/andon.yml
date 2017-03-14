@@ -8,7 +8,7 @@ pre_stage:
   go_cd_agent_props:
     - ansible
   custom_cmd:
-    - /usr/bin/ansible-galaxy install franklinkim.docker-compose
+    - ansible-galaxy install franklinkim.docker-compose
 
 production:
   go_cd_agent_props:
@@ -19,7 +19,6 @@ production:
       jobs:
         - job: CreateAndDeployInstance
           tasks:
-            - task: sudo ansible-galaxy install franklinkim.docker-compose
             - task: ansible-playbook -i ansible-scripts/inventory ansible-scripts/deploy-instance.yml -vvvv
               build_path: .
               run_if_conditions: passed
