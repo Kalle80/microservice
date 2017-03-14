@@ -41,5 +41,6 @@
       state: started
       search_regex: "SSH-2.0-OpenSSH"
 
-  - Pause:
+  - name: Pause playbook for 10 seconds
+    pause:
       seconds: 10
