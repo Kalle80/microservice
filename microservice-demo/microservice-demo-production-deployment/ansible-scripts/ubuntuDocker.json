@@ -1,13 +1,13 @@
 {
   "tenantstack":
   {
-    "stackstoreid":"0000000009",
-    "name":"UbuntuDocker",
+    "stackstoreid":"0000000014",
+    "name":"Ubuntu-server-14.04",
     "entities":
     {
-      "ubuntu":
+      "pdcubuntu_01":
       {
-        "name":"Ubuntu-Docker",
+        "name":"Ubuntu-server-14.04",
         "Description":"Microservice Demo",
         "properties":
         {
@@ -24,7 +24,7 @@
           "hostname":"demo",
           "flavor":"2C-4GB",
           "imagename":"A_ubuntu-server-14.04.03",
-          "hiera_file":"http://localhost/templates/hiera_templates/docker.yaml",
+          "hiera_file":"http://localhost/templates/hiera_templates/ubuntuldap.yaml",
           "ldap_locality": "city"
           }
         }
