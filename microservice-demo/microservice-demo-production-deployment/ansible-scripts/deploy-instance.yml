@@ -40,3 +40,6 @@
       timeout: 600
       state: started
       search_regex: "SSH-2.0-OpenSSH"
+
+  - Pause:
+      seconds: 10
