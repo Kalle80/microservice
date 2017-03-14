@@ -33,4 +33,4 @@
       validate_certs: False
       method: DELETE
       headers: {Authentication: "{{ auth_token }}"}
-      when: {{ (json_response.content | from_json ).0.hostname}} == "demo"
+      when: (json_response.content | from_json ).0.hostname == "demo"
