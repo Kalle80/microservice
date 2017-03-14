@@ -36,7 +36,7 @@
     wait_for:
       host: demo.andondev.pub.tds.tieto.com
       port: 22
-      delay: 60
+      delay: 10
       timeout: 320
       state: started
-      search_regex: "Welcome to Ubuntu"
+      search_regex: "SSH-2.0-OpenSSH"
