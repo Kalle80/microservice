@@ -4,9 +4,11 @@ general:
   dependency:
    - Microservice_Acceptance [PostStage]
 
-# pre_stage:
-#   custom_cmd:
-#    - /usr/bin/ansible-galaxy install franklinkim.docker-compose
+pre_stage:
+  go_cd_agent_props:
+    - ansible
+  custom_cmd:
+    - /usr/bin/ansible-galaxy install franklinkim.docker-compose
 
 production:
   go_cd_agent_props:
