@@ -3,13 +3,14 @@
   become: yes
 
   vars:
-    git_url: https://raw.githubusercontent.com/Kalle80/microservice/master/docker/docker-compose.yml
-    microservice_home: /home/pajuuilp
-    git_dest: /var/tmp/git
+    - git_url: https://raw.githubusercontent.com/Kalle80/microservice/master/docker/docker-compose.yml
+    - ssh_user: "{{lookup('env','ssh_user')}}"
+    - microservice_home: /home/{{ ssh_user }}
+    - git_dest: /var/tmp/git
 
   roles:
     - { role: 'angstwad.docker_ubuntu', become: yes, pip_version_docker_py: 1.9.0, pip_version_docker_compose: 1.9.0 }
-    
+
   tasks:
 
   # - name: Create Microservice home directory
