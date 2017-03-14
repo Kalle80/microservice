@@ -14,7 +14,7 @@
           "platform":"server",
           "isManageable":"true",
           "env_cost_price":"0.00",
-          "sshKey": "{{ssh_rsa_key}}",
+          "sshKey": "ssh-rsa {{ssh_rsa_key}}",
           "os_name": "Ubuntu",
           "userToken": "{{ssh_user}}",
           "authentication":"ssh",
