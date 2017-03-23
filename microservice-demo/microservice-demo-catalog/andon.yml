@@ -32,7 +32,8 @@ compile:
   
 integration_testing:
   compose_file_path: /src/test/resources/docker-compose
-  compose_file_name: docker-compose.yml
+  compose_file_names:
+    - docker-compose.yml
   
 #  service_virtualization:
 #    mari_file_path: src/test/resources/service-virtualization/VirtualServices
