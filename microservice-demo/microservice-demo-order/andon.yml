@@ -30,34 +30,35 @@ compile:
               build_path: .
               run_if_conditions: passed
   
-integration_testing:
+testing:
   compose_file_path: /src/test/resources
   compose_file_names:
     - docker-compose.yml
     - docker-compose.yml
     - docker-compose.yml
   
-  service_virtualization:
-    mari_file_path: src/test/resources/service-virtualization/VirtualServices  
-    mari_file_names:
-      - catalog.mari
+#  service_virtualization:
+#    mari_file_path: src/test/resources/service-virtualization/VirtualServices  
+#    mari_file_names:
+#      - catalog.mari
       
   tests:
     go_cd_agent_props:
       - java:8
       - maven
     test_services:
-      service_virtualization: true
-      robot_framework: true
+      service_virtualization: false
+      robot_framework: false
       cucumber: false
     stages:
       - stage: IntegrationTests
         jobs:
           - job: Robot
-            selenium_grid: true
+            selenium_grid: false
             browser_stack: false
             tasks:
-              - task: mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+#              - task: mvn -P robot -Drobot.url=http://order:8080 -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.browser=chrome install
+              - task: true
                 build_path: .
                 run_if_conditions: passed
 

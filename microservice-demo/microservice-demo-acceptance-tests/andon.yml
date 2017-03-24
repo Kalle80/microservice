@@ -15,7 +15,7 @@ general:
 #    - true
 #    - true
   
-acceptance_testing:
+testing:
   compose_file_path: /src/test/resources
   compose_file_name: docker-compose.yml
 
