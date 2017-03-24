@@ -54,6 +54,9 @@ testing:
       - stage: IntegrationTests
         jobs:
           - job: Robot
+            artifacts:
+              test:
+                source: testtarget
             selenium_grid: false
             browser_stack: false
             tasks:

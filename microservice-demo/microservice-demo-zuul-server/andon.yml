@@ -21,6 +21,9 @@ compile:
     - stage: Compile
       jobs:
         - job: Maven
+          artifacts:
+            test:
+              source: target
           tasks:
             - task: mvn clean -Djava.security.egd=file:/dev/./urandom install
               build_path: .

@@ -51,6 +51,9 @@ testing:
       - stage: IntegrationTesting
         jobs:
           - job: Robot
+            artifacts:
+              test:
+                source: target
             selenium_grid: false
             tasks:
               - task: mvn -P Robot -D service_url=http://catalog:8080 install
