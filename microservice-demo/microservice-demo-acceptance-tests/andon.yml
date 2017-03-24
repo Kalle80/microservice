@@ -32,22 +32,25 @@ acceptance_testing:
         jobs:
           - job: BrowserStack_IE
             selenium_grid: false
-            browser_stack: true
+            browser_stack: false
             tasks:
-              - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:$BROWSERSTACK_KEY@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browser:IE,browser_version:11.0,os:Windows,os_version:7,resolution:1024x768,browserstack.local:True,project:microservice_demo,build:$GO_PIPELINE_COUNTER,browserstack.localIdentifier:BrowserStack_IE" clean install
+#              - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:$BROWSERSTACK_KEY@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browser:IE,browser_version:11.0,os:Windows,os_version:7,resolution:1024x768,browserstack.local:True,project:microservice_demo,build:$GO_PIPELINE_COUNTER,browserstack.localIdentifier:BrowserStack_IE" clean install
+              - task: true
           - job: BrowserStack_Android
             selenium_grid: false
-            browser_stack: true
+            browser_stack: false
             tasks:
-              - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:$BROWSERSTACK_KEY@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browserName:android,platform:ANDROID,device:Samsung Galaxy S5,browserstack.local:True,project:microservice_demo,build:$GO_PIPELINE_COUNTER,browserstack.localIdentifier:BrowserStack_Android" clean install
+#              - task: mvn -Probot -Drobot.remote_url=http://ilpopaju1:$BROWSERSTACK_KEY@hub.browserstack.com:80/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 -Drobot.desired_capabilities="browserName:android,platform:ANDROID,device:Samsung Galaxy S5,browserstack.local:True,project:microservice_demo,build:$GO_PIPELINE_COUNTER,browserstack.localIdentifier:BrowserStack_Android" clean install
+              - task: true
       - stage: AcceptanceTestingSeleniumGrid
         jobs:
           - job: SeleniumGrid_Chrome
-            selenium_grid: true
-            owasp_zap: true
+            selenium_grid: false
+            owasp_zap: false
             browser_stack: false
             tasks:
-              - task: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
+#              - task: mvn clean -Probot,zap -Drobot.http_proxy_port=8000 -Drobot.http_proxy_host=zap -Drobot.browser=chrome -Drobot.remote_url=http://hub:4444/wd/hub -Drobot.order.url=http://zuul:8080/order/ -Drobot.main.url=http://zuul:8080 -Drobot.catalog_rest_url=http://catalog:8080 -Drobot.customer_rest_url=http://customer:8080 clean install
+              - task: true
 
   selenium:
     version: "2.53.1"
@@ -58,7 +61,7 @@ acceptance_testing:
       amount: 1
 
   
-#  cron_timer: 0 0 22 ? * MON-FRI
+  cron_timer: 0 0 22 ? * MON-FRI
   
 post_stage:
   go_cd_agent_props:

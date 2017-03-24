@@ -56,6 +56,7 @@ integration_testing:
               - task: mvn -P Robot -D service_url=http://catalog:8080 install
                 build_path: .
                 run_if_conditions: passed
+  cron_timer: 0 0 22 ? * MON-FRI
   
 post_stage:
   go_cd_agent_props:
